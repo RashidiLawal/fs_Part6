@@ -1,42 +1,37 @@
-// import { createSlice } from "@reduxjs/toolkit"
-import { createStore, combineReducers } from "redux"
-import notificationReducer from "./notificationReducer"
-
-
+import { createSlice } from "@reduxjs/toolkit";
+import { getAll, newCreateAnec, update } from "../services/anecdotes";
 
 const anecdotesAtStart = [
-  'If it hurts, do it more often',
-  'Adding manpower to a late software project makes it later!',
-  'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
-  'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
-  'Premature optimization is the root of all evil.',
-  'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
-]
+  "If it hurts, do it more often",
+  "Adding manpower to a late software project makes it later!",
+  "The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
+  "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+  "Premature optimization is the root of all evil.",
+  "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
+];
 
-const getId = () => (100000 * Math.random()).toFixed(0)
+const getId = () => (100000 * Math.random()).toFixed(0);
 
 const asObject = (anecdote) => {
   return {
     content: anecdote,
     id: getId(),
-    votes: 0
-  }
-}
+    votes: 0,
+  };
+};
 
-const initialState = anecdotesAtStart.map(asObject)
+const initialState = anecdotesAtStart.map(asObject);
 
-
-/* const anecdoteSlice = createSlice({
+const anecdoteSlice = createSlice({
   name: "anecdotes",
   initialState,
   reducers: {
-    initialAnecdotes(state, action) {
-      const content = action.payload
-      return [...state, content]
-      
+    setAnecdotes(state, action) {
+      return action.payload;
     },
     voteFor(state, action) {
-      const id = action.payload;
+      const id = action.payload.id;
+      console.log({ id });
       const updatedAnecdote = state.find((anecdote) => anecdote.id === id);
       const newAnecdote = {
         ...updatedAnecdote,
@@ -47,19 +42,36 @@ const initialState = anecdotesAtStart.map(asObject)
       );
     },
     newAnecdote(state, action) {
-      const content = action.payload;
-      state.push({
-        content,
-        id: getId(),
-        votes: 0,
-      });
+      state.push(action.payload);
     },
   },
 });
- */
 
 
-const reducer = (state = initialState, action) => {
+export const initializeAnecdotes = () => {
+  return async dispatch => {
+    const anecdotes = await getAll()
+    dispatch(setAnecdotes(anecdotes));
+  }
+}
+
+
+export const createAnecdote = content => {
+  return async dispatch => {
+    const newAnecdot = await newCreateAnec(content)
+    dispatch(newAnecdote(newAnecdot));
+  }
+}
+
+
+export const vote = anecdote => {
+  return async dispatch => {
+    const updatedAnecdote = await update({...anecdote, votes: anecdote.votes + 1})
+    dispatch(voteFor(updatedAnecdote));
+  }
+}
+
+/* const reducer = (state = initialState, action) => {
   console.log('state now: ', state)
   console.log('action', action)
 
@@ -82,23 +94,14 @@ const reducer = (state = initialState, action) => {
     default:
        return state;
   }
-}
+} */
 
-
-const conReducer = combineReducers({
-  anecdotes: reducer,
-  notifications: notificationReducer,
-});
-
-const store = createStore(conReducer);
-
-export const initialAnecdotes = (anecdotes) => {
+/* export const initialAnecdotes = (anecdotes) => {
   return store.dispatch({ type: "INIT_ANECDOTES",
 data: {anecdotes} });
-}
+} */
 
-
- export const voteFor = (id) => {
+/* export const voteFor = (id) => {
    return {
      type: "VOTE",
      data: {
@@ -106,9 +109,9 @@ data: {anecdotes} });
      }
    };
  };
+ */
 
-
-
+/* 
 export const newAnecdote = (event) => {
   event.preventDefault()
   const content = event.target.anecdote.value
@@ -122,9 +125,10 @@ export const newAnecdote = (event) => {
     },
   };
 } 
+ */
+
+export const { setAnecdotes, voteFor, newAnecdote } = anecdoteSlice.actions;
 
 
 
-/* export const {voteFor, newAnecdote} = anecdoteSlice.actions
-export default anecdoteSlice.reducer */
-export default reducer 
+export default anecdoteSlice.reducer;

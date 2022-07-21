@@ -1,0 +1,63 @@
+{
+  "anecdotes": [
+    {
+      "content": "If it hurts, do it more often",
+      "id": "47145",
+      "votes": 0
+    },
+    {
+      "content": "Adding manpower to a late software project makes it later!",
+      "id": "21149",
+      "votes": 0
+    },
+    {
+      "content": "The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
+      "id": "69581",
+      "votes": 1
+    },
+    {
+      "content": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+      "id": "36975",
+      "votes": 0
+    },
+    {
+      "content": "Premature optimization is the root of all evil.",
+      "id": "25170",
+      "votes": 2
+    },
+    {
+      "content": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
+      "id": "98312",
+      "votes": 9
+    },
+    {
+      "content": "hi",
+      "id": "85683",
+      "vote": 0,
+      "votes": 1
+    },
+    {
+      "content": "hello",
+      "id": "17787",
+      "vote": 0
+    },
+    {
+      "content": "Learning stage is like the falling rain, you only see through it after it settles.",
+      "id": "87118",
+      "vote": 0,
+      "votes": 1
+    },
+    {
+      "content": "Learning stage is like the falling rain, you only see through it after it settles.",
+      "id": "10039",
+      "vote": 0,
+      "votes": 1
+    },
+    {
+      "content": "debugind the mytsteries of life",
+      "id": "36190",
+      "vote": 0,
+      "votes": null
+    }
+  ]
+}
