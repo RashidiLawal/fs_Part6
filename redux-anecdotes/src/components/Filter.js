@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {setFilter} from "../reducers/filterReducer";
 
 const Filter = (props) => {
-    // const dispatch = useDispatch()
+
    
     const handleChange = (e) => {
        props.setFilter(e.target.value);
@@ -24,7 +24,6 @@ const mapDispatchToProps = () => {
   return setFilter()
 };
 
-// export default Filter
 const ConnectedAnecdotes = connect(
   mapDispatchToProps
   )(Filter);

@@ -4,7 +4,6 @@ import { vote } from "../reducers/anecdoteReducer";
 
 const Anecdote = ({ anecdote }) => {
   const dispatch = useDispatch();
-  //  console.log(anecdote)
   const voteForHandler = () => {
     dispatch(vote(anecdote));
     dispatch(setNotification(`You voted for '${anecdote.content}'`, 2));

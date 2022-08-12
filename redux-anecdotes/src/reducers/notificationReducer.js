@@ -1,32 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-// const notificationReducer = (state = null, action) => {
-//   switch (action.type) {
-//     case "NEW_NOTIFICATION":
-//       return action.notification;
-//     case "HIDE_NOTIFICATION":
-//       return action.notification;
-//     default:
-//       return state;
-//   }
-// };
-
-// export const notificationTimer = (notification) => {
-//   return (dispatch) => {
-//     dispatch({
-//       type: "NEW_NOTIFICATION",
-//       notification,
-//     });
-
-//     setTimeout(() => {
-//       dispatch({
-//         type: "HIDE_NOTIFICATION",
-//         notification: null,
-//       });
-//     }, 5000);
-//   };
-// };
-
 const initialState = null;
 
 
@@ -47,7 +19,7 @@ export const setNotification = (notification, timer) => {
     setTimeout(() => {
       dispatch(newNotification(null));
     }, timer * 1000);
-    // clearTimeout(setTimeDuration);
+    
   };
 };
 

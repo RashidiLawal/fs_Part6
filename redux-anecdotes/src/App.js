@@ -8,18 +8,10 @@ import { initializeAnecdotes } from "./reducers/anecdoteReducer";
 
 const App = () => {
   const dispatch = useDispatch();
- /*  const fetchData = async () => {
-    const res = await getAll();
-    try {
-      dispatch(setAnecdotes(res.data));
-    } catch (error) {
-      throw Error(error.message);
-    }
-  }; */
+
 
   useEffect(() => {
-    /* getAll().then((anecdotes) => dispatch(setAnecdotes(anecdotes))); */
-    // fetchData();
+    
     dispatch(initializeAnecdotes());
   }, [dispatch]);
 

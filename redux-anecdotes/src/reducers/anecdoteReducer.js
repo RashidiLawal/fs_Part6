@@ -71,61 +71,7 @@ export const vote = anecdote => {
   }
 }
 
-/* const reducer = (state = initialState, action) => {
-  console.log('state now: ', state)
-  console.log('action', action)
 
-  switch(action.type) {
-    case 'INIT_ANECDOTES':
-      return action.data
-    case 'NEW_ANECDOTES':
-      return state.concat(action.data)
-    case 'VOTE': {
-      const id = action.data.id
-      const updatedAnecdote = state.find(anecdote => anecdote.id === id)
-      const newAnecdote = {
-        ...updatedAnecdote, votes: updatedAnecdote.votes + 1
-      }
-      return state.map((anecdote) =>
-        anecdote.id !== id ? anecdote : newAnecdote
-      );
-
-    }
-    default:
-       return state;
-  }
-} */
-
-/* export const initialAnecdotes = (anecdotes) => {
-  return store.dispatch({ type: "INIT_ANECDOTES",
-data: {anecdotes} });
-} */
-
-/* export const voteFor = (id) => {
-   return {
-     type: "VOTE",
-     data: {
-       id
-     }
-   };
- };
- */
-
-/* 
-export const newAnecdote = (event) => {
-  event.preventDefault()
-  const content = event.target.anecdote.value
-  event.target.anecdote.value = ''
-  return {
-    type: "NEW_ANECDOTES",
-    data: {
-      content,
-      id: getId(),
-      votes: 0,
-    },
-  };
-} 
- */
 
 export const { setAnecdotes, voteFor, newAnecdote } = anecdoteSlice.actions;
 

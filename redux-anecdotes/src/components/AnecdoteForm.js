@@ -4,7 +4,6 @@ import { setNotification } from "../reducers/notificationReducer";
 import { createAnecdote } from "../reducers/anecdoteReducer";
 
 const AnecdoteForm = (props) => {
-  // const dispatch = useDispatch();
 
   const addAnecdote = async (event) => {
     event.preventDefault();
@@ -13,10 +12,7 @@ const AnecdoteForm = (props) => {
     
     props.setNotification(`Anecdote <strong>'${content}'</strong> added to list`, 5)
   ;
-    /* event.target.anecdote.value = "";
-    setTimeout(() => {
-      dispatch(notificationTimer());
-    }, 5000); */
+  
   };
 
   return (
@@ -42,12 +38,7 @@ const mapDispatchToProps = {
   createAnecdote
 };
 
-/* const mapDispatchToPropps = () => {
-  return createAnecdote();
-}; */
 
-
-// export default AnecdoteForm;
 const ConnectedAnecdotes = connect(
   mapStateToprops,
   mapDispatchToProps
