@@ -6,6 +6,9 @@ const Notification = (props) => {
   // const notification = useSelector((state) => state.notifications);
 
   // console.log({ notification });
+  if (props.notifications === null || !props.notifications.length) {
+    return null;
+  }
 
   const style = {
     border: "1rem solid blue",
@@ -13,16 +16,10 @@ const Notification = (props) => {
     borderWidth: 2,
   };
 
-  return <div style={style}>
-            {props.notifications}
-         </div>;
-
+  return <div style={style}>{props.notifications}</div>;
 };
 
 const mapStateToprops = (state) => {
-  if (state.notifications === null) {
-    return null;
-  }
   return {
     notifications: state.notifications,
   };
@@ -31,3 +28,31 @@ const mapStateToprops = (state) => {
 const ConnectedAnecdotes = connect(mapStateToprops)(Notification);
 export default ConnectedAnecdotes;
 // export default Notification;
+
+/* const Notification = (props) => {
+  // const notification = useSelector((state) => state.notifications);
+
+  // console.log({ notification });
+  if (props.notifications === null) {
+    return null;
+  }
+
+  const style = {
+    border: "1rem solid blue",
+    padding: 10,
+    borderWidth: 2,
+  };
+
+  return <div style={style}>{props.notifications}</div>;
+};
+
+const mapStateToprops = (state) => {
+  return {
+    notifications: state.notifications,
+  };
+};
+
+const ConnectedAnecdotes = connect(mapStateToprops)(Notification);
+export default ConnectedAnecdotes;
+// export default Notification;
+ */

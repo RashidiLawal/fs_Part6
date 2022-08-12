@@ -27,20 +27,18 @@ import { createSlice } from "@reduxjs/toolkit";
 //   };
 // };
 
+const initialState = null;
+
 
 const notificationSlice = createSlice({
   name: "notification",
-  initialState: "",
+  initialState,
   reducers: {
     newNotification(state, action) {
-      
       return action.payload;
     },
-    
   },
 });
-
-
 
 export const setNotification = (notification, timer) => {
   return async (dispatch) => {
@@ -49,6 +47,7 @@ export const setNotification = (notification, timer) => {
     setTimeout(() => {
       dispatch(newNotification(null));
     }, timer * 1000);
+    // clearTimeout(setTimeDuration);
   };
 };
 
